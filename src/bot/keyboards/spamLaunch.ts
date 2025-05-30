@@ -4,6 +4,7 @@ import { Api, Bot, Context, InlineKeyboard } from "grammy";
 interface MetadataState {
   currentField?: MetadataField;
   values: Partial<Record<MetadataField, string>>;
+  menuMessageId?: number;
 }
 
 type MetadataField =

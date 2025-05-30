@@ -6,6 +6,7 @@ import {registerStartCommand} from './commands/start.ts';
 import {registerMainMenuCallBacks} from './scenes/mainMenu.ts';
 import {registerSpamLaunchScene} from './scenes/spamLaunch.ts';
 import {registerMetadataFieldHandlers} from './keyboards/spamLaunch.ts';
+import {registerSpamLaunchUpload} from './scenes/spamLaunchUpload.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,5 +26,6 @@ registerStartCommand(bot);
 registerMainMenuCallBacks(bot);
 registerSpamLaunchScene(bot);
 registerMetadataFieldHandlers(bot);
+registerSpamLaunchUpload(bot);
 
 bot.start()

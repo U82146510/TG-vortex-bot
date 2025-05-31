@@ -22,35 +22,4 @@ export function registerSpamLaunchScene(bot: Bot<Context>) {
     });
   });
 
-  bot.on("message:text", async (ctx) => {
-    const userId = ctx.from!.id;
-    const state = userMetadataState.get(userId);
-
-    if (!state?.currentField) return;
-
-    const field = state.currentField;
-    const value = ctx.message.text;
-    const updatedValues = {
-      ...state.values,
-      [field]: value,
-    };
-
-    // Save updated metadata and clear the current field
-    userMetadataState.set(userId, {
-      ...state,
-      currentField: undefined,
-      values: updatedValues,
-    });
-
-    await ctx.reply(`✅ *${field.toUpperCase()}* updated to: *${value}*`, {
-      parse_mode: "Markdown",
-    });
-
-    // Update the existing message with new keyboard
-    if (state.menuMessageId) {
-      await ctx.api.editMessageReplyMarkup(ctx.chat.id, state.menuMessageId, {
-        reply_markup: getSpamLaunchMenu(updatedValues),
-      });
-    }
-  });
 }

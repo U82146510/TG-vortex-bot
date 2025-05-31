@@ -5,8 +5,8 @@ interface BumpState {
   timeoutId?: NodeJS.Timeout;
 }
 
-const userBumpState = new Map<number, BumpState>();
-const userCTOInput: Record<number, string> = {};
+export const userBumpState = new Map<number, BumpState>();
+export const userCTOInput: Record<number, string> = {};
 
 export function registerMainMenuCallBacks(bot: Bot<Context>) {
   // "Your Projects"
@@ -42,26 +42,5 @@ export function registerMainMenuCallBacks(bot: Bot<Context>) {
     userBumpState.set(userId, { expecting: true, timeoutId });
 
     await ctx.reply("🤖 Please send the token address you want to create a CTO for:");
-  });
-
-  // Handle text input
-  bot.on("message:text", async (ctx) => {
-    const userId = ctx.from!.id;
-    const state = userBumpState.get(userId);
-
-    if (!state?.expecting) return;
-
-    // Cancel timeout and store token
-    if (state.timeoutId) clearTimeout(state.timeoutId);
-
-    const tokenAddress = ctx.message.text.trim();
-    userCTOInput[userId] = tokenAddress;
-    userBumpState.delete(userId);
-
-    await ctx.reply(`✅ Token address received:\n\`${tokenAddress}\``, {
-      parse_mode: "Markdown",
-    });
-
-    // You can continue logic here (e.g., validation, next step)
   });
 }

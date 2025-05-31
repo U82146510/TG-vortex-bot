@@ -7,6 +7,8 @@ import {registerMainMenuCallBacks} from './scenes/mainMenu.ts';
 import {registerSpamLaunchScene} from './scenes/spamLaunch.ts';
 import {registerMetadataFieldHandlers} from './keyboards/spamLaunch.ts';
 import {registerSpamLaunchUpload} from './scenes/spamLaunchUpload.ts';
+import {registerReferralScene} from './scenes/referrals.ts';
+import {registerTextInputHandler} from './middlewares/textHandler.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,5 +29,7 @@ registerMainMenuCallBacks(bot);
 registerSpamLaunchScene(bot);
 registerMetadataFieldHandlers(bot);
 registerSpamLaunchUpload(bot);
+registerReferralScene(bot);
+registerTextInputHandler(bot);
 
 bot.start()

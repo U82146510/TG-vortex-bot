@@ -1,20 +1,21 @@
 import { Api, Bot, Context, InlineKeyboard } from "grammy";
 
 
+type MetadataField = "name" | "symbol" | "description" | "twitter" | "telegram" | "website" | "image";
+
 interface MetadataState {
   currentField?: MetadataField;
-  values: Partial<Record<MetadataField, string>>;
+  values: {
+    name?: string;
+    symbol?: string;
+    description?: string;
+    twitter?: string;
+    telegram?: string;
+    website?: string;
+    image?: string;
+  };
   menuMessageId?: number;
 }
-
-type MetadataField =
-  | "name"
-  | "symbol"
-  | "description"
-  | "twitter"
-  | "telegram"
-  | "website"
-  | "image";
 
 export const userMetadataState = new Map<number, MetadataState>();
 

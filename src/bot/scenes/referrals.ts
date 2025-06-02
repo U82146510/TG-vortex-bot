@@ -6,7 +6,6 @@ export function registerReferralScene(bot: Bot<Context>) {
   // Show referral stats + buttons
   bot.callbackQuery("referrals", async (ctx) => {
     await ctx.answerCallbackQuery();
-    const userId = ctx.from.id;
     const referralCode = ""; // Replace with stored code if needed
 
     const keyboard = new InlineKeyboard()

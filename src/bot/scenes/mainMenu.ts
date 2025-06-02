@@ -12,7 +12,11 @@ export function registerMainMenuCallBacks(bot: Bot<Context>) {
   // "Your Projects"
   bot.callbackQuery("your_projects", async (ctx) => {
     await ctx.answerCallbackQuery();
-    await ctx.reply("Showing your projects...");
+    await ctx.reply("Showing your projects...",{
+      parse_mode:"Markdown",
+      reply_markup:new InlineKeyboard()
+      .text("🔙 Back to Menu", "back_to_home"),
+    });
   });
 
   // "Create New Project"
@@ -20,6 +24,7 @@ export function registerMainMenuCallBacks(bot: Bot<Context>) {
     await ctx.answerCallbackQuery();
     await ctx.reply("Creating new project...");
   });
+  
 
   // "BUMP BOT"
   bot.callbackQuery("bump_bot", async (ctx) => {

@@ -9,6 +9,7 @@ import {registerMetadataFieldHandlers} from './keyboards/spamLaunch.ts';
 import {registerSpamLaunchUpload} from './scenes/spamLaunchUpload.ts';
 import {registerReferralScene} from './scenes/referrals.ts';
 import {registerTextInputHandler} from './middlewares/textHandler.ts';
+import {registerNavigatorHandler} from './scenes/navigation.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,5 +32,6 @@ registerMetadataFieldHandlers(bot);
 registerSpamLaunchUpload(bot);
 registerReferralScene(bot);
 registerTextInputHandler(bot);
+registerNavigatorHandler(bot);
 
 bot.start()

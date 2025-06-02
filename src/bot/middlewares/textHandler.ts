@@ -37,7 +37,7 @@ export function registerTextInputHandler(bot: Bot<Context>) {
     // Handle Referral input
     const referralState = userReferralState.get(userId);
     if (referralState?.expectingInput) {
-      const valid = /^[a-zA-Z0-9]{4,15}$/.test(text);
+      const valid = /^[a-zA-Z0-9]{4,15}$/.test(text); // here go the referal from user input
       if (!valid) {
         await ctx.reply("❌ Invalid code. Use 4–15 letters or numbers, no spaces/symbols.");
         return;
